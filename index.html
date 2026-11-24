@@ -964,8 +964,8 @@ function displayName(e){
     }
   }
   if(e[1] === 2 && n === 'Toronto Zoo'){
-    if(t.indexOf('Black Student Summer Leadership') !== -1) n = 'TDSB Black Student Summer Leadership Program (at Toronto Zoo)';
-    else if(t.indexOf('Indigenous Student Summer Leadership') !== -1) n = 'TDSB Indigenous Student Summer Leadership Program (at Toronto Zoo)';
+    if(t.indexOf('Black Student Summer Leadership') !== -1) n = 'Toronto District School Board (TDSB) Black Student Summer Leadership Program (at Toronto Zoo)';
+    else if(t.indexOf('Indigenous Student Summer Leadership') !== -1) n = 'Toronto District School Board (TDSB) Indigenous Student Summer Leadership Program (at Toronto Zoo)';
     else if(t.indexOf('Green Jobs') !== -1) n = 'Green Jobs Program (Canadian Parks and Recreation Association, at Toronto Zoo)';
   }
   if(n.indexOf('St. Richard Catholic School') === 0) n = 'Jays Care Affiliate School Program \u2014 at St. Richard Catholic School';
@@ -984,8 +984,16 @@ var ACRONYMS = [
   ['ESDC', 'Employment and Social Development Canada (ESDC)'],
   ['PHAC', 'Public Health Agency of Canada (PHAC)'],
   ['NEET', 'not in employment, education or training (NEET)'],
-  ['CSJ', 'Canada Summer Jobs (CSJ)']
+  ['CSJ', 'Canada Summer Jobs (CSJ)'],
+  ['TDSB', 'Toronto District School Board (TDSB)'],
+  ['TCDSB', 'Toronto Catholic District School Board (TCDSB)']
 ];
+
+/* A bare file-path URL printed as text in an outcomes note reads as a
+   broken fragment; render the report's own link under its document name. */
+function linkOc(u){
+  return u.replace(/https:\/\/metrac\.org\/content\/user_files\/2025\/12\/METRAC-Impact-Report-2024\.pdf/g, '<a href="https://metrac.org/content/user_files/2025/12/METRAC-Impact-Report-2024.pdf" target="_blank" rel="noopener">METRAC Impact Report 2024</a>');
+}
 
 function entryHTML(e){
   /* First use of each acronym on a card prints the full name, with the
@@ -997,6 +1005,18 @@ function entryHTML(e){
       var a = ACRONYMS[i][0], full = ACRONYMS[i][1];
       if(acrDone[a]) continue;
       if(t.indexOf(full) !== -1){ acrDone[a] = 1; continue; }
+      /* Parenthetical use of the two school boards prints the full name
+         on its own: "(TDSB)" would otherwise expand to the doubled
+         "(Toronto District School Board (TDSB))", and "(TDSB/TCDSB)" to
+         the same doubling on both boards. The acronym is still
+         introduced by a later bare use on the same card, if there is
+         one; other acronyms keep the established "(Full (ACR))" form. */
+      if(a === 'TDSB' || a === 'TCDSB'){
+        var bare = full.replace(/ \(.*\)$/, '');
+        t = t.replace(new RegExp('\\(' + a + '\\)', 'g'), '(' + bare + ')');
+        t = t.replace(new RegExp('\\(' + a + '/', 'g'), '(' + bare + '/');
+        t = t.replace(new RegExp('/' + a + '\\)', 'g'), '/' + bare + ')');
+      }
       var re = new RegExp('\\b' + a + '\\b');
       if(re.test(t)){
         if(a === 'PHAC' && /\bunder PHAC\b/.test(t)) t = t.replace(/\bunder PHAC\b/, 'under the ' + full);
@@ -1163,7 +1183,7 @@ function entryHTML(e){
     if(en.dg) h += '<div class="efact"><strong>How often it runs:</strong> ' + esc(acr(en.dg)) + '</div>';
     if(en.cf) h += '<div class="efact"><strong>Cost to families:</strong> ' + esc(acr(en.cf)) + '</div>';
     if(tpS) h += '<div class="efact"><strong>Who it\u2019s for:</strong> ' + esc(acr(tpS)) + '</div>';
-    if('oc' in en) h += '<div class="flag outcomes"><strong>Publishes outcome measures.</strong>' + (ocS ? ' ' + esc(acr(ocS)) : '') + '</div>';
+    if('oc' in en) h += '<div class="flag outcomes"><strong>Publishes outcome measures.</strong>' + (ocS ? ' ' + linkOc(esc(acr(ocS))) : '') + '</div>';
     if(en.es && en.es[0] !== e[8]) h += '<div class="esrc">Program details source: ' + (en.es[1] ? '<a href="' + esc(en.es[1]) + '" target="_blank" rel="noopener">' + esc(acr(en.es[0])) + '</a>' : esc(acr(en.es[0]))) + '</div>';
   }
   if(e[10]) h += '<div class="flag"><strong>Note on this listing:</strong> ' + esc(acr(e[10])) + '</div>';
