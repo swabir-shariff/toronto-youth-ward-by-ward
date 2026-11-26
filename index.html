@@ -415,7 +415,7 @@ html,body{overflow-x:clip}
    measured height in JS; the values here are the pre-JS fallback per width. */
 :root{ --sticky-h:196px; }
 #detail{ scroll-margin-top:calc(var(--sticky-h) + 16px); }
-section[aria-labelledby="map-h"],section[aria-labelledby="paired-h"],section[aria-labelledby="bars-h"],section[aria-labelledby="tbl-h"]{ scroll-margin-top:calc(var(--sticky-h) + 16px); }
+section[aria-labelledby="intro-h"],section[aria-labelledby="map-h"],section[aria-labelledby="paired-h"],section[aria-labelledby="bars-h"],section[aria-labelledby="tbl-h"]{ scroll-margin-top:calc(var(--sticky-h) + 16px); }
 @media (max-width:760px){
   :root{ --sticky-h:118px; }
   /* F-C: slimmer masthead + a pinned bar about half its former height, so the
@@ -512,6 +512,7 @@ details.catgroup[open] .catchev{transform:rotate(180deg)}
 </div>
 <div class="tabpanel" id="panel-overview" data-panel="overview" role="tabpanel">
 <nav class="jumprow ovjump" aria-label="Jump to a part of this page">
+  <a href="#ov-intro" data-jump="ov-intro">Introduction</a>
   <a href="#ov-findings" data-jump="ov-findings">Findings</a>
   <a href="#ov-map" data-jump="ov-map" data-tab="wards">The map</a>
   <a href="#ov-paired" data-jump="ov-paired">Need vs what&rsquo;s there</a>
@@ -522,13 +523,25 @@ details.catgroup[open] .catchev{transform:rotate(180deg)}
   <div class="stat" role="listitem"><div class="num">655</div><div class="lab">Places the City runs itself — libraries, centres, youth spaces, after-school sites. <span data-split="placed" data-cat="1">595</span> in a ward; <span data-split="citywide" data-cat="1">60</span> citywide.</div></div>
   <div class="stat" role="listitem"><div class="num">1,092</div><div class="lab">Ontario &amp; Canada funding — Trillium grants, Canada Summer Jobs, federal youth jobs. <span data-split="placed" data-cat="2">769</span> in a ward; <span data-split="citywide" data-cat="2">323</span> citywide.</div></div>
   <div class="stat" role="listitem"><div class="num">382</div><div class="lab">Charities &amp; other groups, funded outside the streams above. <span data-split="placed" data-cat="3">327</span> in a ward; <span data-split="citywide" data-cat="3">55</span> citywide. Compared by places, not dollars.</div></div>
-  <div class="stat" role="listitem"><div class="num">31</div><div class="lab">Neighbourhood Improvement Areas — places the City targets for extra investment. They fall in 16 of 25 wards; 9 wards have none.</div></div>
+  <div class="stat" role="listitem"><div class="num">33</div><div class="lab">Neighbourhood Improvement Areas — places the City targets for extra investment. They fall in 16 of 25 wards; 9 wards have none. 31 areas were designated in 2014; two have since split, so 33 neighbourhoods carry the designation today.</div></div>
   <div class="stat" role="listitem"><div class="num">14.7%</div><div class="lab">Toronto children in low-income households (2021 Census; 67,725 of 461,810). Ward rates are estimates — see How this was counted.</div></div>
 </div>
 
 
 
-<section class="viz" id="ov-paired" aria-labelledby="paired-h">
+<section class="viz" id="ov-intro" aria-labelledby="intro-h">
+  <span class="eyebrow" aria-hidden="true">Introduction</span>
+  <h2 id="intro-h">What this record is</h2>
+  <p>This is a ward-by-ward record of what Toronto has for its young people &mdash; the programs, places and grants in each of the city&rsquo;s 25 wards. It was compiled in November 2026, for the council elected for 2026&ndash;2030, so that anyone can see, ward by ward, what is there and where the gaps are. What it shows is what is published: if a program is missing from the record, that means no published source for it was found &mdash; not proof that it does not exist.</p>
+  <p>Every listing in the record has a published source. There are 2,668 listings, each counted once in one of four groups: 539 funded by the City, 655 delivered by the City, 1,092 funded by Ontario or Canada, and 382 privately funded. Of these, 2,154 are listed under a ward and 514 are listed as citywide.</p>
+  <p>City funding in the record comes to about $88.8 million in published grant awards from the City&rsquo;s 539 City-funded listings, 2022 to 2026. That is grant money only: it does not include the cost of running City-delivered services, or money from Ontario, Canada or charities. About $85 million of it is tied to a ward, and about $3.9 million across 76 citywide listings. One $35,000 grant to the Jean Augustine Centre in Ward 3 (Etobicoke&mdash;Lakeshore) was published by the City twice in 2024 &mdash; in the Black-Mandated Funding Framework Established stream list and in the Innovation 2024 list. It appears twice in the record, but its dollars are counted once, in the ward-tied total. About $85 million plus about $3.9 million comes to about $88.9 million, while the total is about $88.8 million &mdash; the small gap is rounding.</p>
+  <p>Listings are shown alongside need in each ward: children in low income &mdash; 14.7% of children aged 0 to 17 in the City of Toronto, 67,725 of 461,810, from the 2021 Census and 2020 incomes, a pandemic year, counted on the after-tax low-income measure. Each ward page also shows how many young people aged 5 to 24 live in the ward, and the City&rsquo;s Neighbourhood Improvement Areas, the neighbourhoods the City has marked for extra investment.</p>
+  <p>One pattern stands out in Scarborough. Its six wards hold 440 of the 2,154 listings tied to a ward &mdash; about 1 in 5. Counted on the same basis as the money, they hold 117 of the 463 City-funded listings tied to a ward &mdash; about 1 in 4 &mdash; but only $7.2 million of about $85 million in City funding tied to a ward &mdash; about 1 in 12. Those shares alone say nothing about funding against need, and the citywide funding also reaches young people in Scarborough; the ward pages show the need in each ward.</p>
+  <p>The money is not spread evenly even within Scarborough. Scarborough Centre (Ward 21) holds about $3.0 million in City funding across 29 City-funded listings &mdash; about $104,000 each. Scarborough North (Ward 23) holds $22,155 across 7 City-funded listings &mdash; about $3,000 each &mdash; the second-lowest total dollars of any ward; the lowest is Ward 2, Etobicoke Centre, at $17,500. The gap is driven mainly by grant size, not by the number of listings.</p>
+  <p>There is also a gap in what anyone can prove. Only 423 of the 1,616 listings the record started with publish any results &mdash; 26%. The other 1,052 listings were added in November 2026 and have not been through that check yet &mdash; for outcomes, not for sources: every listing has a published source. The record notes that most of what the 423 publish is a count of people served, not evidence of change.</p>
+  <p>How to read this record. Each ward page stands on its own, for the councillor and staff of that ward. The dollar figures are published dollars only &mdash; a minimum, not the full amount spent, because not every dollar is published. City awards run 2022 to 2026, and 2026 is a partial year; the year for each listing is printed beside it on the ward pages, where a year is published. The comparisons here describe where the published money sits. They are not a league table, and they are not a verdict on any ward.</p>
+</section>
+   <section class="viz" id="ov-paired" aria-labelledby="paired-h">
   <span class="eyebrow" aria-hidden="true">Need vs. what’s there</span>
   <h2 id="paired-h">Need vs. what&rsquo;s there</h2>
   <p class="vizsub">One bar per ward — need. The big number is what&rsquo;s there, with its rank out of 25. Sorted by need, greatest first. Black line: Toronto average, 14.7%.</p>
